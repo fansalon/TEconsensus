@@ -49,7 +49,7 @@ Having installed both the Dfam database and the famdb.py script you can then mov
 
 Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) how to extract the TE consensus nucleotide fasta sequence is only explained here. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not necessarily mean** this is the worflow to be followed when using other tools.
 
-```./famdb.py -i Dfam_curatedonly.h5 families --include-class-in-name -f fasta_name -ad 'species of interest' > speciesOfInterset.Dfam.fa```
+```./famdb.py -i Dfam_curatedonly.h5 families --include-class-in-name -f fasta_name -ad 'species of interest' > speciesOfInterset.all.Dfam.fa```
 
 * ```-i``` indicates the database to be used
 * ```-f``` indicates the output format (i.e., fasta_name meand fasta format with the following header format: ```>MIR @Mammalia [S:40,60,65]```
@@ -60,9 +60,16 @@ Although several operations could be done using the Dfam database and the famdb.
 
 **Important**
 
-The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to type the following line of code to generate the TE consensus sequence file\
+The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to retrieve from the database only the TEs belonging to such classes.\
+If so, type the following line of code to generate the TE consensus sequence file:
 
 ```
+array=("LINE" "SINE" "DNA" "LTR" "RC" "Other" "Retroposon")
+rm speciesOfInterset.Dfam.fa # to avoid appending sequences to an already existing file
+for cls in ${array[@]}
+do
+  ./famdb.py -i Dfam_curatedonly.h5 families --include-class-in-name --class $cls -f fasta_name -ad 'species of interest' >> speciesOfInterset.Dfam.fa
+done
 ```
 
 
