@@ -4,7 +4,7 @@ This file is part of the TEspeX manual, some of the TEspeX prerequisites (https:
 
 Theoretically, TEspeX is supposed to work on any type of TE consensus sequence. However, providing a good input file may increase the accuracy of TEspeX.
 
-TEspeX has been largely tested on Dfam and RepBase consensus sequences. Being aware that while the former is freely available the latter is not instructions to use both databases are reported below.
+TEspeX has been largely tested on Dfam and RepBase consensus sequences, instructions to use both databases are reported below.
 
 ## **Dfam** ##
 
