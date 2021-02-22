@@ -39,7 +39,7 @@ chmod +x famdb.py
 The Dfam curated-only database contains TE sequences of H. sapiens, M. musculus, D. rerio, D. melanogaster, C. elegans.\
 If working with other species, plelase consider to download the full Dfam databse (it may take some time ~10hours - ~15GB).
 
-```wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```
+```[optional] wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```
 
 
 
