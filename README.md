@@ -10,6 +10,7 @@ TEspeX has been largely tested on Dfam and RepBase consensus sequences, instruct
 
 To use the Dfam database as source of TE consensus sequences follow the instructions listed below:
 
+If working on Unix:
 ```
 #Install h5py to read and write files in HDF5 format
 pip3 install --user h5py
@@ -26,15 +27,15 @@ If working on Mac Os:
 #Install h5py to read and write files in HDF5 format
 pip3 install --user h5py
 #Download and unzip the Dfam curated database
-wget https://www.dfam.org/releases/Dfam_3.3/families/Dfam_curatedonly.h5.gz
-zcat Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
+curl -L -o Dfam_curatedonly.h5.gz https://www.dfam.org/releases/Dfam_3.3/families/Dfam_curatedonly.h5.gz
+gunzip -c Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
 #Install the pyhton3 script to retrieve fasta TE sequences from Dfam database
-wget https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
+curl -L -o famdb.py https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
 ```
 
 Having installed both the Dfam database and the famdb.py script you can then move to the  next steps.
 
-Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) here only how to extract the TE consensus nucleotide fasta sequence is explained. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not mean** this is the worflow to be followed when using other tools.
+Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) how to extract the TE consensus nucleotide fasta sequence is only explained here. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not mean** this is the worflow to be followed when using other tools.
 
 ```./famdb.py -i Dfam_curatedonly.h5 families -f fasta_name -ad 'species of interest' > speciesOfInterse.Dfam.fa```
 
