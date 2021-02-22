@@ -167,9 +167,22 @@ Having installed RepeatMasker coonfigured with RepBase, TE consensus sequences i
 
 Note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not necessarily mean** this is the worflow to be followed when using other tools.
 
-```./queryRepeatDatabase.pl -species 'species of interest' > speciesOfInterset.RepBase.fa```
+```./queryRepeatDatabase.pl -species 'species of interest' > speciesOfInterset.RepBase.all.fa```
 
 * ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')
 
+**Important**
+
+The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to retrieve from the database only the TEs belonging to such classes.\
+If so, type the following line of code to generate the TE consensus sequence file:
+
+```
+rm speciesOfInterset.RepBase.fa # to avoid appending sequences to an already existing file
+array=("LINE" "SINE" "DNA" "LTR" "RC" "Other" "Retroposon")
+for cls in ${array[@]}
+do
+  ./queryRepeatDatabase.pl -class $cls -species 'species of interest' >> speciesOfInterset.RepBase.fa
+done
+```
 
 For further information please consult http://www.repeatmasker.org/RepeatMasker/
