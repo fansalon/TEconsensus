@@ -55,10 +55,11 @@ Although several operations could be done using the Dfam database and the famdb.
 * ```-f``` indicates the output format (i.e., fasta_name meand fasta format with the following header format: ```>MIR @Mammalia [S:40,60,65]```
 * ```-a``` and ```-d``` include ancestors/descendants as with lineage. We recommend to use both flags
 * ```--include-class-in-name``` includes the RepeatMasker type/subtype in the family name, e.g. HERV16#LTR/ERVL.
-* ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')
+* ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')\
 
 
 **Important**
+
 The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to type the following line of code to generate the TE consensus sequence file"
 
 ```
