@@ -33,12 +33,14 @@ curl -L -o Dfam_curatedonly.h5.gz https://www.dfam.org/releases/Dfam_3.3/familie
 gunzip -c Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
 #Install the pyhton3 script to retrieve fasta TE sequences from Dfam database
 curl -L -o famdb.py https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
+chmod +x famdb.py
 ```
 
 The Dfam curated-only database contains TE sequences of H. sapiens, M. musculus, D. rerio, D. melanogaster, C. elegans.\
-If working with other species, plelase consider to download the full Dfam databse (it may take some time ~10hours - xGB).
+If working with other species, plelase consider to download the full Dfam databse (it may take some time ~10hours - ~15GB).
 
-```wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```\
+```wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```
+
 
 
 **TE consensus sequence retrieval (FASTA)**
@@ -47,14 +49,73 @@ Having installed both the Dfam database and the famdb.py script you can then mov
 
 Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) how to extract the TE consensus nucleotide fasta sequence is only explained here. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not mean** this is the worflow to be followed when using other tools.
 
-```./famdb.py -i Dfam_curatedonly.h5 families -f fasta_name -ad 'species of interest' > speciesOfInterse.Dfam.fa```
+```./famdb.py -i Dfam_curatedonly.h5 families -f fasta_name -ad 'species of interest' > speciesOfInterset.Dfam.fa```
 
-* ```-i``` indicates the databse to be used
+* ```-i``` indicates the database to be used
 * ```-f``` indicates the output format (i.e., fasta_name meand fasta format with the following header format: ```>MIR @Mammalia [S:40,60,65]```
 * ```-a``` and ```-d``` include ancestors/descendants as with lineage. We recommend to use both flags
 * ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')
 
 
-
-
 For further information please consult https://github.com/Dfam-consortium/FamDB and https://dfam.org/home
+
+
+## **RepBase** ##
+
+Please note how RepBase database is no more freely available. The following instructions assume you have the RepBase database by your own (the required file is named RepBaseRepeatMaskerEdition-XXXX.tar.gz).
+
+
+**Installation**
+
+RepBase relies on RepeatMasker to retrieve TE consensus sequences. Therefore, first RepeatMasker has to installed, then RepBase has to be properly configured.
+
+Prerequisite: perl 5.8.0 or higher installed
+
+If working on Unix:
+```
+#get repeatmasker
+wget http://www.repeatmasker.org/RepeatMasker/RepeatMasker-open-4-0-7.tar.gz
+tar -zxvf RepeatMasker-open-4-0-7.tar.gz
+mv RepeatMasker RepeatMasker-4-0-7
+cd RepeatMasker-4-0-7/
+
+#get the RepBase Libraries. Please NOTE that this file is no more freely accesible - assuming you have one copie somewhere
+cp /path/to/RepBase/RepBaseRepeatMaskerEdition-XXX.tar.gz .
+tar -zxvf RepBaseRepeatMaskerEdition-XXX.tar.gz
+rm RepBaseRepeatMaskerEdition-XXX.tar.gz
+
+#get Tandem Repeats Finder
+# download at http://tandem.bu.edu/trf/trf409.linux64.download.html
+mv trf409.linux64 trf
+chmod +x trf
+
+#get rmblast
+wget http://www.repeatmasker.org/rmblast-2.10.0+-x64-linux.tar.gz
+tar -zxvf rmblast-2.10.0+-x64-linux.tar.gz
+rm rmblast-2.10.0+-x64-linux.tar.gz
+
+# configure!
+./configure
+#this prompts you to a different window
+# press ENTER when asked when asked for perl
+# press ENTER when asked when asked for RepeatMasker installation directory
+# type trf full path /path/to/RepeatMasker-4-0-7/trf
+# when asked Add a Search Engine type 2
+# type full path to rmblast bin directory /path/to/RepeatMasker-4-0-7/rmblast-2.10.0/bin/
+# type Y
+# type 5
+```
+
+
+**TE consensus sequence retrieval (FASTA)**
+
+Having installed RepeatMasker coonfigured with RepBase TE consensus sequences in fasta format can now be retrieved.
+
+Note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not mean** this is the worflow to be followed when using other tools.
+
+```./queryRepeatDatabase.pl -species 'species of interest' > speciesOfInterset.RepBase.fa```
+
+* ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')
+
+
+For further information please consult http://www.repeatmasker.org/RepeatMasker/
