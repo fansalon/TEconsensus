@@ -52,10 +52,10 @@ Although several operations could be done using the Dfam database and the famdb.
 ```./famdb.py -i Dfam_curatedonly.h5 families --include-class-in-name -f fasta_name -ad 'species of interest' > speciesOfInterset.all.Dfam.fa```
 
 * ```-i``` indicates the database to be used
-* ```-f``` indicates the output format (i.e., fasta_name meand fasta format with the following header format: ```>MIR @Mammalia [S:40,60,65]```
+* ```-f``` indicates the output format (i.e., fasta_name means fasta format with the following header format: ```>MIR @Mammalia [S:40,60,65]```
 * ```-a``` and ```-d``` include ancestors/descendants as with lineage. We recommend to use both flags
 * ```--include-class-in-name``` includes the RepeatMasker type/subtype in the family name, e.g. HERV16#LTR/ERVL.
-* ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')\
+* ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')
 
 
 **Important**
