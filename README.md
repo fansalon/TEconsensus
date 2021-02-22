@@ -47,7 +47,7 @@ If working with other species, plelase consider to download the full Dfam databs
 
 Having installed both the Dfam database and the famdb.py script you can then move to the  next steps.
 
-Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) how to extract the TE consensus nucleotide fasta sequence is only explained here. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not mean** this is the worflow to be followed when using other tools.
+Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) how to extract the TE consensus nucleotide fasta sequence is only explained here. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not necessarily mean** this is the worflow to be followed when using other tools.
 
 ```./famdb.py -i Dfam_curatedonly.h5 families -f fasta_name -ad 'species of interest' > speciesOfInterset.Dfam.fa```
 
@@ -79,7 +79,7 @@ tar -zxvf RepeatMasker-open-4-0-7.tar.gz
 mv RepeatMasker RepeatMasker-4-0-7
 cd RepeatMasker-4-0-7/
 
-#get the RepBase Libraries. Please NOTE that this file is no more freely accesible - assuming you have one copie somewhere
+#get the RepBase Libraries. Please NOTE that this file is no more freely accesible - assuming you have one copy somewhere
 cp /path/to/RepBase/RepBaseRepeatMaskerEdition-XXX.tar.gz .
 tar -zxvf RepBaseRepeatMaskerEdition-XXX.tar.gz
 rm RepBaseRepeatMaskerEdition-XXX.tar.gz
@@ -100,7 +100,42 @@ rm rmblast-2.10.0+-x64-linux.tar.gz
 # press ENTER when asked when asked for perl
 # press ENTER when asked when asked for RepeatMasker installation directory
 # type trf full path /path/to/RepeatMasker-4-0-7/trf
-# when asked Add a Search Engine type 2
+# when asked 'Add a Search Engine' type 2
+# type full path to rmblast bin directory /path/to/RepeatMasker-4-0-7/rmblast-2.10.0/bin/
+# type Y
+# type 5
+```
+
+If working on Mac os:
+```
+#get repeatmasker
+curl -L -o RepeatMasker-open-4-0-7.tar.gz http://www.repeatmasker.org/RepeatMasker/RepeatMasker-open-4-0-7.tar.gz
+tar -zxvf RepeatMasker-open-4-0-7.tar.gz
+mv RepeatMasker RepeatMasker-4-0-7
+cd RepeatMasker-4-0-7/
+
+#get the RepBase Libraries. Please NOTE that this file is no more freely accesible - assuming you have one copy somewhere
+cp /path/to/RepBase/RepBaseRepeatMaskerEdition-XXX.tar.gz .
+tar -zxvf RepBaseRepeatMaskerEdition-XXX.tar.gz
+rm RepBaseRepeatMaskerEdition-XXX.tar.gz
+
+#get Tandem Repeats Finder
+# download at http://tandem.bu.edu/trf/trf409.linux64.download.html
+mv trf409.linux64 trf
+chmod +x trf
+
+#get rmblast
+curl -L -o rmblast-2.10.0+-x64-linux.tar.gz http://www.repeatmasker.org/rmblast-2.10.0+-x64-linux.tar.gz
+tar -zxvf rmblast-2.10.0+-x64-linux.tar.gz
+rm rmblast-2.10.0+-x64-linux.tar.gz
+
+# configure!
+./configure
+#this prompts you to a different window
+# press ENTER when asked when asked for perl
+# press ENTER when asked when asked for RepeatMasker installation directory
+# type trf full path /path/to/RepeatMasker-4-0-7/trf
+# when asked 'Add a Search Engine' type 2
 # type full path to rmblast bin directory /path/to/RepeatMasker-4-0-7/rmblast-2.10.0/bin/
 # type Y
 # type 5
@@ -109,9 +144,9 @@ rm rmblast-2.10.0+-x64-linux.tar.gz
 
 **TE consensus sequence retrieval (FASTA)**
 
-Having installed RepeatMasker coonfigured with RepBase TE consensus sequences in fasta format can now be retrieved.
+Having installed RepeatMasker coonfigured with RepBase, TE consensus sequences in fasta format can now be retrieved.
 
-Note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not mean** this is the worflow to be followed when using other tools.
+Note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not necessarily mean** this is the worflow to be followed when using other tools.
 
 ```./queryRepeatDatabase.pl -species 'species of interest' > speciesOfInterset.RepBase.fa```
 
