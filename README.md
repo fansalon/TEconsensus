@@ -49,12 +49,20 @@ Having installed both the Dfam database and the famdb.py script you can then mov
 
 Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) how to extract the TE consensus nucleotide fasta sequence is only explained here. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not necessarily mean** this is the worflow to be followed when using other tools.
 
-```./famdb.py -i Dfam_curatedonly.h5 families -f fasta_name -ad 'species of interest' > speciesOfInterset.Dfam.fa```
+```./famdb.py -i Dfam_curatedonly.h5 families --include-class-in-name -f fasta_name -ad 'species of interest' > speciesOfInterset.Dfam.fa```
 
 * ```-i``` indicates the database to be used
 * ```-f``` indicates the output format (i.e., fasta_name meand fasta format with the following header format: ```>MIR @Mammalia [S:40,60,65]```
 * ```-a``` and ```-d``` include ancestors/descendants as with lineage. We recommend to use both flags
+* ```--include-class-in-name``` includes the RepeatMasker type/subtype in the family name, e.g. HERV16#LTR/ERVL.
 * ```'species of interest'```: case insensitive scientific name (e.g 'homo sapiens', 'mus musculus')
+
+
+**Important**
+The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to type the following line of code to generate the TE consensus sequence file"
+
+```
+```
 
 
 For further information please consult https://github.com/Dfam-consortium/FamDB and https://dfam.org/home
@@ -62,8 +70,11 @@ For further information please consult https://github.com/Dfam-consortium/FamDB 
 
 ## **RepBase** ##
 
-Please note how RepBase database is no more freely available. The following instructions assume you have the RepBase database by your own (the required file is named RepBaseRepeatMaskerEdition-XXXX.tar.gz).
+Please note how RepBase database is no more freely available and an account is needed to retrieve the TE consensus sequences in fasta format.
 
+If you have an account on the GIRI RepBase database (https://www.girinst.org) the best solution is to download the TE consensus of interest directly from the website. Otherwise, if you have the RepBaseRepeatMaskerEdition-XXXX.tar.gz file, having no longer a valid account, you may consider to query the database through the RepeatMasker software following the below-reported instructions.
+
+The following instructions assume you have the RepBase database copy by your own (the required file is named RepBaseRepeatMaskerEdition-XXXX.tar.gz).
 
 **Installation**
 
