@@ -18,6 +18,7 @@ wget https://www.dfam.org/releases/Dfam_3.3/families/Dfam_curatedonly.h5.gz
 zcat Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
 #Install the pyhton3 script to retrieve fasta TE sequences from Dfam database
 wget https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
+chmod +x famdb.py
 ```
 
 If working on Mac Os:
@@ -30,5 +31,18 @@ zcat Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
 #Install the pyhton3 script to retrieve fasta TE sequences from Dfam database
 wget https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
 ```
+
+Having installed both the Dfam database and the famdb.py script you can then move to the  next steps.
+
+Although several operations could be done using the Dfam database and the famdb.py script (look: https://github.com/Dfam-consortium/FamDB) here only how to extract the TE consensus nucleotide fasta sequence is explained. Also, note that this is how **WE** recommend to extract TE sequences to be used with TEspeX. This **does not mean** this is the worflow to be followed when using other tools.
+
+```./famdb.py -i Dfam_curatedonly.h5 families -f fasta_name -ad 'species of interest' > speciesOfInterse.Dfam.fa```
+
+* ```-i``` indicates the databse to be used
+* ```-f``` indicates the output format (i.e., fasta_name meand fasta format with the following header format: ```>MIR @Mammalia [S:40,60,65]```
+* ```-a``` and ```-d``` include ancestors/descendants as with lineage. We recommend to use both flags
+
+
+
 
 For further information please consult https://github.com/Dfam-consortium/FamDB and https://dfam.org/home
