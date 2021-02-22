@@ -64,8 +64,8 @@ The command above will download all the types of repeated sequences (including s
 If so, type the following line of code to generate the TE consensus sequence file:
 
 ```
-array=("LINE" "SINE" "DNA" "LTR" "RC" "Other" "Retroposon")
 rm speciesOfInterset.Dfam.fa # to avoid appending sequences to an already existing file
+array=("LINE" "SINE" "DNA" "LTR" "RC" "Other" "Retroposon")
 for cls in ${array[@]}
 do
   ./famdb.py -i Dfam_curatedonly.h5 families --include-class-in-name --class $cls -f fasta_name -ad 'species of interest' >> speciesOfInterset.Dfam.fa
