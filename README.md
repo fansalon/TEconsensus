@@ -8,6 +8,8 @@ TEspeX has been largely tested on Dfam and RepBase consensus sequences, instruct
 
 ## **Dfam** ##
 
+**Installation**
+
 To use the Dfam database as source of TE consensus sequences follow the instructions listed below:
 
 If working on Unix:
@@ -33,11 +35,13 @@ gunzip -c Dfam_curatedonly.h5.gz > Dfam_curatedonly.h5
 curl -L -o famdb.py https://raw.githubusercontent.com/Dfam-consortium/FamDB/master/famdb.py
 ```
 
-The Dfma curated-only database contains TE sequences of H. sapiens, M. musculus, D. rerio, D. melanogaster, C. elegans.\
+The Dfam curated-only database contains TE sequences of H. sapiens, M. musculus, D. rerio, D. melanogaster, C. elegans.\
 If working with other species, plelase consider to download the full Dfam databse (it may take some time ~10hours - xGB).
 
 ```wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```
 
+
+**TE consensus sequence retrieval (FASTA)**
 
 Having installed both the Dfam database and the famdb.py script you can then move to the  next steps.
 
