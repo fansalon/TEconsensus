@@ -38,7 +38,7 @@ curl -L -o famdb.py https://raw.githubusercontent.com/Dfam-consortium/FamDB/mast
 The Dfam curated-only database contains TE sequences of H. sapiens, M. musculus, D. rerio, D. melanogaster, C. elegans.\
 If working with other species, plelase consider to download the full Dfam databse (it may take some time ~10hours - xGB).
 
-```wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```
+```wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```\
 
 
 **TE consensus sequence retrieval (FASTA)**
