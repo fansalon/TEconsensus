@@ -36,7 +36,7 @@ curl -L -o famdb.py https://raw.githubusercontent.com/Dfam-consortium/FamDB/mast
 chmod +x famdb.py
 ```
 
-An non-manually-curated Dfam database also exists. If wishing to work also with such non-manually-curated sequences please consider to download it. However, we do not recommend it as the download may take some time (~10h) and - at lest for *H. sapiens*, *M. musculus*, *D. rerio*, *D. melanogaster*, *C. elegans* - nothing changes between the manually- and non-manually-curated sequences.
+A non-manually-curated Dfam database also exists. If wishing to work also with such non-manually-curated sequences please consider to download it. However, we do not recommend it as the download may take some time (~10h) and - at lest for *H. sapiens*, *M. musculus*, *D. rerio*, *D. melanogaster*, *C. elegans* - nothing changes between the manually- and non-manually-curated databases.
 
 ```[optional] wget https://www.dfam.org/releases/Dfam_3.2/families/Dfam.h5.gz```
 
