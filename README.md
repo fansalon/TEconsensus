@@ -59,7 +59,7 @@ Although several operations could be done using the Dfam database and the famdb.
 
 **Important**
 
-The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to retrieve from the database only the TEs belonging to such classes.\
+The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to retrieve from the database only the TEs belonging to such classes. This is highly recommended.
 
 **RECOMMENDED**
 
