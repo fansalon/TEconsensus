@@ -60,6 +60,8 @@ Although several operations could be done using the Dfam database and the famdb.
 **Important**
 
 The command above will download all the types of repeated sequences (including satellite, simple repeat, rRNA, tRNA, artefacts, ..). If you are interested in quantifying exclusively the expression of Transposable Elements (e.g. LINE, SINE, LTR, DNA, RC, Other, Retroposon \[SVA\]) we recommend to retrieve from the database only the TEs belonging to such classes.\
+
+**RECOMMENDED**
 If so, type the following line of code to generate the TE consensus sequence file:
 
 ```
